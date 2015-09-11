@@ -1,3 +1,4 @@
+require('../database')
 // *** main dependencies *** //
 var express = require('express');
 var path = require('path');
@@ -7,6 +8,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var swig = require('swig');
 var api = require('./routes/api');
+var methodOverride = require('method-override');
 
 
 // *** routes *** //
@@ -21,6 +23,7 @@ var app = express();
 var swig = new swig.Swig();
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
+app.use(methodOverride('_method'));
 
 
 // *** static directory *** //
